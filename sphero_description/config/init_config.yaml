@@ -1,0 +1,13 @@
+zeros:
+  x: 1
+  y: 2
+sphere:
+  radius: 0.2
+  max_velocity: 1
+joints:
+  x_lower_limit: -10
+  x_upper_limit: 10
+  y_lower_limit: -10
+  y_upper_limit: 10
+source_list:
+  ["publish_joint_states"]

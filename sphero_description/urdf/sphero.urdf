@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<robot name="sphero" xmlns:xacro="http://www.ros.org/wiki/xacro">
+	<xacro:property name="robot_params" value="${load_yaml('$(find sphero_description)/config/init_config.yaml')}" />
+	<xacro:property name="sphere_properies" value="${robot_params['sphere']}" />
+	<xacro:property name="radius" value="${sphere_properies['radius']}" />
+	<xacro:property name="max_velocity" value="${sphere_properies['max_velocity']}" />
+	<xacro:property name="joints_properties" value="${robot_params['joints']}" />
+	<xacro:property name="x_lower_limit" value="${joints_properties['x_lower_limit']}" />
+	<xacro:property name="x_upper_limit" value="${joints_properties['x_upper_limit']}" />
+	<xacro:property name="y_lower_limit" value="${joints_properties['y_lower_limit']}" />
+	<xacro:property name="y_upper_limit" value="${joints_properties['y_upper_limit']}" />
+
+  <link name="base_link">
+  </link>
+
+  <link name="x_axis">
+  </link>
+
+  <link name="y_axis">
+  </link>
+
+  <link name="z_axis">
+    <visual>
+      <geometry>
+				<sphere radius="${radius}"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="x" type="prismatic">
+    <parent link="base_link"/>
+    <child link="x_axis"/>
+		<axis xyz="1 0 0" />
+		<limit effort="30" velocity="${max_velocity}" lower="${x_lower_limit}" upper="${x_upper_limit}" />
+  </joint>
+
+  <joint name="y" type="prismatic">
+    <parent link="x_axis"/>
+    <child link="y_axis"/>
+		<axis xyz="0 1 0" />
+		<limit effort="30" velocity="${max_velocity}" lower="${y_lower_limit}" upper="${y_upper_limit}" />
+  </joint>
+
+  <joint name="theta" type="continuous">
+    <parent link="y_axis"/>
+    <child link="z_axis"/>
+		<axis xyz="0 0 1" />
+  </joint>
+
+</robot>
