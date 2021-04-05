@@ -1,22 +1,25 @@
+<!-- Launch file with a holonomic sphero robot and a trajectory operation node -->
+
 <launch>
+	<!-- Load robot parameters -->
 	<rosparam command="load" file="$(find sphero_description)/config/init_config.yaml" />
-  <arg name="model" default="$(find sphero_description)/urdf/sphero.urdf"/>
 
-  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+	<!-- Load robot model -->
+	<arg name="model" default="$(find sphero_description)/urdf/sphero.urdf" />
+	<param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
 
-  <!-- Combine joint values -->
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+	<!-- Run node for robot state -->
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
-  <!-- Show in Rviz   -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find sphero_bringup)/launch/config.rviz" />
+	<!-- send joint values -->
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
 
-  <!-- send joint values -->
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
-		<param name="use_gui" value="False"/>
-  </node>
+	<!-- Show in Rviz   -->
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find sphero_bringup)/launch/config.rviz" />
 
+	<!-- Launch trajectory node. (1) python (2) C++ -->
 	<!--
-	<node pkg="sphero_operations" type="trajectory_publisher.py" name="trajectory_publisher" output = "screen" />
+		<node pkg="sphero_operations" type="trajectory_publisher.py" name="trajectory_publisher" output = "screen" />
 	-->
 	<node pkg="sphero_operations" type="trajectory_publisher_cpp" name="trajectory_publisher" output = "screen" />
 

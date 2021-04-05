@@ -1,6 +1,6 @@
 zeros:
   x: 1
-  y: 2
+  y: 3
 sphere:
   radius: 0.2
   max_velocity: 1
