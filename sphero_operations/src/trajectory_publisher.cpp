@@ -26,6 +26,8 @@ int main(int argc, char **argv)
 	new_state.name = {"x", "y", "theta"};
 	new_state.header.stamp = ros::Time::now();
 	new_state.position = {0, 0, 0};
+	/* Get current time */
+	ros::Time start = ros::Time::now();
 	auto time_elapsed = (ros::Time::now() - start);
 	double time_secs = 0;
 
@@ -50,8 +52,6 @@ int main(int argc, char **argv)
 	double cos_angle = del_x / dist;
 	double sin_angle = del_y / dist;
 
-	/* Get current time */
-	ros::Time start = ros::Time::now();
 	while (ros::ok())
 	{
 
