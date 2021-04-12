@@ -13,7 +13,7 @@ The goal of this repository to provide code base that students can use to visual
 4. Launch:
    `roslaunch sphero_bringup rviz_trajectory.launch`
 
-a. You will notice that the robot is moving following a cubic trajectory.
+a. You will notice that the robot is moving and is following a constant velocity trajectory.
 b. The black polygon represents the outer boundary.
 c. The red polygons represent the obstacles.
 d. The green polyline represents the path of the robot.
@@ -40,6 +40,8 @@ e. The robot is shown as a red sphere along with its axes.
    
    `scripts/trajectory_publisher.py`: Python script file for sending position coordinates to robot
    `src/trajectory_publisher.cpp`: C++ file for sending position coordinates to robot
+   
+   We need to modify either of the above files to get the robot follow a particular path. Constant velocity trajectory and cubic trajectory are already provided.
 
 #### Visualization using rviz
 
