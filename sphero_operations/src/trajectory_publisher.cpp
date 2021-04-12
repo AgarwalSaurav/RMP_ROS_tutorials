@@ -3,7 +3,8 @@
 /* In this example a cubic trajectory is used to travel between two points */
 /* This is for a 3 DoF planar robot */
 
-#include "ros/ros.h"
+#include <ros/ros.h>
+#include <ros/topic.h>
 #include <sensor_msgs/JointState.h>
 #include <cmath>
 #include <fstream>
@@ -26,48 +27,72 @@ int main(int argc, char **argv)
 	new_state.name = {"x", "y", "theta"};
 	new_state.header.stamp = ros::Time::now();
 	new_state.position = {0, 0, 0};
-	/* Get current time */
-	ros::Time start = ros::Time::now();
-	auto time_elapsed = (ros::Time::now() - start);
-	double time_secs = 0;
 
-	/* Sample start and goal locations */
-	double start_position[] = {0, 0};
-	double goal_position[] = {3, 4};
+	/* Get starting position of the robot */
+	std::string joint_state_topic = "/joint_states";
+	auto start_state_ptr = ros::topic::waitForMessage<sensor_msgs::JointState>(joint_state_topic);
+	auto start_position = start_state_ptr->position;
 
-	/* Calculations for cubic trajectory */
+	/* Sample goal location */
+	double goal_position[] = {5, 0, M_PI};
+
+  /* Change in orientation */
+	double del_theta = goal_position[2] - start_position[2];
+
 	double del_x = goal_position[0] - start_position[0];
 	double del_y = goal_position[1] - start_position[1];
 	double dist_sqr = del_x * del_x + del_y * del_y;
-
 	double dist = sqrt(dist_sqr);
 	double max_vel = 0.5;
+
+	/* Constant velocity */
+	/* */
+	double traj_a = 0;
+	double traj_b = 0;
+	double traj_c = max_vel;
+	double traj_d = 0;
+	double traj_tf = dist / max_vel;
+	/* */
+
+	/* Cubic trajectory */
+	/*
 	double max_vel_sqr = max_vel * max_vel;
 	double traj_a = -(16 * max_vel * max_vel_sqr)/(27 * dist_sqr);
 	double traj_b = (4 * max_vel_sqr)/(3 * dist);
 	double traj_c = 0;
 	double traj_d = 0;
 	double traj_tf = (3 * dist) / (2 * max_vel);
+  */
 
 	double cos_angle = del_x / dist;
 	double sin_angle = del_y / dist;
 
+	/* Get current time */
+	ros::Time start = ros::Time::now();
+	auto time_elapsed = (ros::Time::now() - start);
+	double time_secs = 0;
+
 	while (ros::ok())
 	{
-
 		time_elapsed = (ros::Time::now() - start);
 		time_secs = time_elapsed.toSec();
-		if(time_secs < traj_tf) {
+		new_state.header.stamp = ros::Time::now();
+		if(time_secs <= traj_tf) {
 			double time_secs_sqr = time_secs * time_secs;
-			new_state.header.stamp = ros::Time::now();
 			double pt = traj_a * time_secs * time_secs_sqr + traj_b * time_secs_sqr + traj_c * time_secs + traj_d;
 			/* Write position of the robot to the message data */
-			new_state.position[0] = pt * cos_angle;
-			new_state.position[1] = pt * sin_angle;
-			new_state.position[2] = time_secs * atan2(del_x, del_y)/traj_tf;
-			/* Send the message */
-			pub.publish(new_state);
+			new_state.position[0] = start_position[0] + pt * cos_angle;
+			new_state.position[1] = start_position[1] + pt * sin_angle;
+			new_state.position[2] = start_position[2] + time_secs * del_theta/traj_tf;
 		}
+		else {
+			/* Write position of the robot to the message data */
+			new_state.position[0] = goal_position[0];
+			new_state.position[1] = goal_position[1];
+			new_state.position[2] = goal_position[2];
+		}
+		/* Send the message */
+		pub.publish(new_state);
 
 		ros::spinOnce();
 		loop_rate.sleep();
