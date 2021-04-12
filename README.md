@@ -20,9 +20,10 @@ You will notice that the robot is moving following a cubic trajectory.
 ## Packages and Files
 
 1. `sphero/sphero_description`
+   
    `urdf` folder contains URDF file for the robot
-   `config` folder provides configuration for the robot
-
+`config` folder provides configuration for the robot
+   
 2. `sphero/sphero_bringup`
 
    `launch` folder contains launch files for the robot
@@ -32,5 +33,6 @@ You will notice that the robot is moving following a cubic trajectory.
    `rviz_trajectory.launch` launch the robot with the trajectory node (see below)
 
 3. `sphero/sphero_operations`
+   
    `scripts/trajectory_publisher.py`: Python script file for sending position coordinates to robot
    `src/trajectory_publisher.cpp`: C++ file for sending position coordinates to robot
