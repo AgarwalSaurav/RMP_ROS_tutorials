@@ -1,4 +1,4 @@
-# RMP_holonomic_sphero
+# RMP_ROS_tutorials
 
 The library provides ROS nodes and launch files for a planar holonomic 3DoF robot. The library is designed for testing out simple Robot Motion Planning algorithms. Currently, the library does not consider dynamics of the robot.
 
@@ -7,7 +7,7 @@ The goal of this repository to provide code base that students can use to visual
 ## Quick Start
 
 1. Clone the repository into your workspace
-   `git clone git@github.com:AgarwalSaurav/RMP_holonomic_sphero.git`
+   `git clone git@github.com:AgarwalSaurav/RMP_ROS_tutorials.git`
 2. Run `catkin_make` on the top level directory of your workspace
 3. `source devel/setup.bash`
 4. Launch:
@@ -19,11 +19,11 @@ You will notice that the robot is moving following a cubic trajectory.
 
 ## Packages and Files
 
-1. `sphero_description`
+1. `sphero/sphero_description`
    `urdf` folder contains URDF file for the robot
    `config` folder provides configuration for the robot
 
-2. `sphero_bringup`
+2. `sphero/sphero_bringup`
 
    `launch` folder contains launch files for the robot
 
@@ -31,6 +31,6 @@ You will notice that the robot is moving following a cubic trajectory.
 
    `rviz_trajectory.launch` launch the robot with the trajectory node (see below)
 
-3. `sphero_operations`
+3. `sphero/sphero_operations`
    `scripts/trajectory_publisher.py`: Python script file for sending position coordinates to robot
    `src/trajectory_publisher.cpp`: C++ file for sending position coordinates to robot
