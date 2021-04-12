@@ -38,8 +38,10 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Graph/vertices1
+        - /Graph/edges1
+        - /Path1
       Splitter Ratio: 0.5
-    Tree Height: 805
+    Tree Height: 371
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -138,13 +140,29 @@ Visualization Manager:
       Marker Topic: visualization_env_polygons
       Name: Environment
       Namespaces:
-        {}
+        basic_shapes: true
       Queue Size: 100
       Value: true
     - Class: rviz/Marker
       Enabled: true
       Marker Topic: visualization_graph/vertices
       Name: Graph/vertices
+      Namespaces:
+        basic_shapes: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: visualization_graph/edges
+      Name: Graph/edges
+      Namespaces:
+        basic_shapes: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: visualization_path
+      Name: Path
       Namespaces:
         basic_shapes: true
       Queue Size: 100
