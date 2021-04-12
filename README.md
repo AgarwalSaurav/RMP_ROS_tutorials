@@ -64,17 +64,6 @@ e. The robot is shown as a red sphere along with its axes.
    Visualization of a polygonal environment. The input file is in sub-folder `data`.
 
    `data/environment` is a list of polygons. Each polygon is a list of 2D points. The polygons are separated by a blank line. The first polygon is the outer boundary. The remaining polygons are obstacles.
-
-   | x_coordinate      | y_coordinate      |
-   | ----------------- | ----------------- |
-   | outer_polygon_p1x | outer_polygon_p1y |
-   | outer_polygon_p2x | outer_polygon_p2y |
-   | outer_polygon_p3x | outer_polygon_p3y |
-   | outer_polygon_p4x | outer_polygon_p4y |
-   | <blank_line>      | <blank_line>      |
-   | obstacle1_p1x     | obstacle1_p1y     |
-   | obstacle1_p2x     | obstacle1_p2y     |
-   | obstacle1_p3x     | obstacle1_p3y     |
-   | obstacle1_p4x     | obstacle1_p4y     |
+   Format: `<x_coordinate y_coordinate>`
 
    
