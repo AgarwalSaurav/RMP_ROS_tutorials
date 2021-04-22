@@ -6,9 +6,9 @@ The goal of this repository to provide code base that students can use to visual
 
 ## Quick Start
 
-1. Clone the repository into your workspace
+1. Clone the repository into your workspace (`catkin_ws/src`)
    
-   `git clone git@github.com:AgarwalSaurav/RMP_ROS_tutorials.git`
+   `git clone https://github.com/AgarwalSaurav/RMP_ROS_tutorials`
    
 2. Run `catkin_make` on the top level directory of your workspace
 
