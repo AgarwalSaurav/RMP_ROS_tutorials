@@ -31,7 +31,7 @@ e. The robot is shown as a red sphere along with its axes.
 
 ## Packages and Files
 
-#### Sphero (plan 3DoF holonomic robot)
+#### Sphero (planar 3DoF holonomic robot)
 
 1. `sphero/sphero_description`
    
@@ -49,11 +49,19 @@ e. The robot is shown as a red sphere along with its axes.
 
 3. `sphero/sphero_operations`
    
+   `scripts/trajectory_publisher_list.py`: Python script file for sending a list of position coordinates to robot using a file
+   
+   `data/poses`: List of poses (x, y, theta) for the robot to follow
+   
+   Optional:
+   
    `scripts/trajectory_publisher.py`: Python script file for sending position coordinates to robot
    
    `src/trajectory_publisher.cpp`: C++ file for sending position coordinates to robot
    
    We need to modify either of the above files to get the robot follow a particular path. Constant velocity trajectory and cubic trajectory are already provided.
+   
+   
 
 #### Visualization using rviz
 
