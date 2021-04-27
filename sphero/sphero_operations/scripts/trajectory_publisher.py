@@ -71,7 +71,7 @@ def talker():
 
             # Write position of the robot to the message data
             # Note: traj_tf = 0 can cause a problem
-            new_state.position = [start_position[0] + pt * cos_angle, start_position[1] + pt * sin_angle, time_secs * (del_theta)/traj_tf]
+            new_state.position = [start_position[0] + pt * cos_angle, start_position[1] + pt * sin_angle, start_position[2] +  time_secs * (del_theta)/traj_tf]
 
         else:
             new_state.header.stamp = rospy.get_rostime()
