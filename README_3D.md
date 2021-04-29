@@ -30,7 +30,7 @@ Load 3D objects into rviz. The data file is located in `data/environment.yaml`
 
    Format: `<vertex_id vertex_id>`
 
-#### Sphero (6DoF robot)
+#### Sphero6d (6DoF robot)
 
 1. `sphero6d/sphero6d_description`
 
