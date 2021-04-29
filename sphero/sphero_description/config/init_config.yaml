@@ -1,6 +1,7 @@
 zeros:
   x: 1
   y: 3
+  theta: 0
 sphere:
   radius: 0.2
   max_velocity: 1
