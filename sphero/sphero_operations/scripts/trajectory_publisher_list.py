@@ -23,17 +23,16 @@ def generate_js(filename):
     return js_list
  
 def publish_js_lin_vel(js_list, max_vel, pub, rate):
-    start_state = js_list[0]
     for j_idx in range(1,len(js_list)):
-        start_position = js_list[j_idx-1].position
-        goal_position = js_list[j_idx].position
+        start_configuration = js_list[j_idx-1].position
+        goal_configuration = js_list[j_idx].position
         # Get current time
         start_time = rospy.get_rostime()
-        del_x = goal_position[0] - start_position[0]
-        del_y = goal_position[1] - start_position[1]
+        del_x = goal_configuration[0] - start_configuration[0]
+        del_y = goal_configuration[1] - start_configuration[1]
         dist_sqr = del_x * del_x + del_y * del_y
         dist = sqrt(dist_sqr)
-        del_theta = goal_position[2] - start_position[2]
+        del_theta = goal_configuration[2] - start_configuration[2]
         traj_tf = dist / max_vel
         
         # Log data
@@ -54,12 +53,15 @@ def publish_js_lin_vel(js_list, max_vel, pub, rate):
 
                 # Write position of the robot to the message data
                 # Note: traj_tf = 0 can cause a problem
-                new_state.position = [start_position[0] + pt * cos_angle, start_position[1] + pt * sin_angle, start_position[2] + time_secs * (del_theta)/traj_tf]
+                if traj_tf < 1e-9:
+                    new_state.position = [start_configuration[0] + pt * cos_angle, start_configuration[1] + pt * sin_angle, goal_configuration[2]]
+                else:
+                    new_state.position = [start_configuration[0] + pt * cos_angle, start_configuration[1] + pt * sin_angle, start_configuration[2] + time_secs * (del_theta)/traj_tf]
 
             else:
                 if j_idx == len(js_list) -1 : # last index
                     new_state.header.stamp = rospy.get_rostime()
-                    new_state.position = goal_position
+                    new_state.position = goal_configuration
                 else:
                     break
 

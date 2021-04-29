@@ -31,16 +31,16 @@ int main(int argc, char **argv)
 	/* Get starting position of the robot */
 	std::string joint_state_topic = "/joint_states";
 	auto start_state_ptr = ros::topic::waitForMessage<sensor_msgs::JointState>(joint_state_topic);
-	auto start_position = start_state_ptr->position;
+	auto start_configuration = start_state_ptr->position;
 
 	/* Sample goal location */
-	double goal_position[] = {5, 0, M_PI};
+	double goal_configuration[] = {5, 0, M_PI};
 
   /* Change in orientation */
-	double del_theta = goal_position[2] - start_position[2];
+	double del_theta = goal_configuration[2] - start_configuration[2];
 
-	double del_x = goal_position[0] - start_position[0];
-	double del_y = goal_position[1] - start_position[1];
+	double del_x = goal_configuration[0] - start_configuration[0];
+	double del_y = goal_configuration[1] - start_configuration[1];
 	double dist_sqr = del_x * del_x + del_y * del_y;
 	double dist = sqrt(dist_sqr);
 	double max_vel = 0.5;
@@ -81,15 +81,15 @@ int main(int argc, char **argv)
 			double time_secs_sqr = time_secs * time_secs;
 			double pt = traj_a * time_secs * time_secs_sqr + traj_b * time_secs_sqr + traj_c * time_secs + traj_d;
 			/* Write position of the robot to the message data */
-			new_state.position[0] = start_position[0] + pt * cos_angle;
-			new_state.position[1] = start_position[1] + pt * sin_angle;
-			new_state.position[2] = start_position[2] + time_secs * del_theta/traj_tf;
+			new_state.position[0] = start_configuration[0] + pt * cos_angle;
+			new_state.position[1] = start_configuration[1] + pt * sin_angle;
+			new_state.position[2] = start_configuration[2] + time_secs * del_theta/traj_tf;
 		}
 		else {
 			/* Write position of the robot to the message data */
-			new_state.position[0] = goal_position[0];
-			new_state.position[1] = goal_position[1];
-			new_state.position[2] = goal_position[2];
+			new_state.position[0] = goal_configuration[0];
+			new_state.position[1] = goal_configuration[1];
+			new_state.position[2] = goal_configuration[2];
 		}
 		/* Send the message */
 		pub.publish(new_state);

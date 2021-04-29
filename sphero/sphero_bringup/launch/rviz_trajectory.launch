@@ -20,7 +20,7 @@
 	<!-- Launch trajectory node. (1) python (2) C++ -->
 	<!--
 		<node pkg="sphero_operations" type="trajectory_publisher.py" name="trajectory_publisher" output = "screen" />
-	<node pkg="sphero_operations" type="trajectory_publisher_cpp" name="trajectory_publisher" output = "screen" />
+		<node pkg="sphero_operations" type="trajectory_publisher_cpp" name="trajectory_publisher" output = "screen" />
 	-->
 	<node pkg="sphero_operations" type="trajectory_publisher_list.py" args="$(find sphero_operations)/data/poses" name="trajectory_publisher" output="screen"/>
 

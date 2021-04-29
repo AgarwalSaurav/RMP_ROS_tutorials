@@ -66,7 +66,7 @@ def publish_js_lin_vel(js_list, max_vel, pub, rate):
                 pt =  max_vel * time_secs
                 new_state.header.stamp = rospy.get_rostime()
 
-                # Write position of the robot to the message data
+                # Write configuration of the robot to the message data
                 # Note: traj_tf = 0 can cause a problem
                 new_state.position = [start_configuration[0] + pt * cos_angle_z * cos_angle_xy, start_configuration[1] + pt * cos_angle_z * sin_angle_xy, start_configuration[2] + pt * sin_angle_z, goal_configuration[3], goal_configuration[4], start_configuration[5] +  time_secs * (del_yaw)/traj_tf]
 
