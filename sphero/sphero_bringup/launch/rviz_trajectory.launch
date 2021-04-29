@@ -22,7 +22,7 @@
 		<node pkg="sphero_operations" type="trajectory_publisher.py" name="trajectory_publisher" output = "screen" />
 		<node pkg="sphero_operations" type="trajectory_publisher_cpp" name="trajectory_publisher" output = "screen" />
 	-->
-	<node pkg="sphero_operations" type="trajectory_publisher_list.py" args="$(find sphero_operations)/data/poses" name="trajectory_publisher" output="screen"/>
+	<node pkg="sphero_operations" type="trajectory_publisher_list.py" args="$(find sphero_operations)/data/configurations" name="trajectory_publisher" output="screen"/>
 
 	<node pkg="rviz_polygon_env" type="draw_polygon_env" args="$(find rviz_polygon_env)/data/environment" name="draw_polygon_env" output = "screen" />
 	<node pkg="rviz_graph" type="draw_graph" args="$(find rviz_graph)/data/vertex_data $(find rviz_graph)/data/edge_data" name="draw_graph" output = "screen" />

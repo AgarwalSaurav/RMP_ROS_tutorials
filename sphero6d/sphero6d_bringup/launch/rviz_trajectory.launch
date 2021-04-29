@@ -23,7 +23,7 @@
 	-->
 
 	<!-- Move robot through a sequence of configurations -->
-	<node pkg="sphero6d_operations" type="trajectory_publisher_list.py" args="$(find sphero6d_operations)/data/poses" name="trajectory_publisher" output="screen"/>
+	<node pkg="sphero6d_operations" type="trajectory_publisher_list.py" args="$(find sphero6d_operations)/data/configurations" name="trajectory_publisher" output="screen"/>
 
 	<!-- Visualize 2D polygonal environment -->
 	<!--
