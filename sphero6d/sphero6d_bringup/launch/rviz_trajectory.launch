@@ -17,14 +17,28 @@
 	<!-- Show in Rviz   -->
 	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find sphero6d_bringup)/launch/config.rviz" />
 
-	<!-- Launch trajectory node. (1) python (2) C++ -->
+	<!-- Move robot from starting configuration to a goal configuration -->
 	<!--
 		<node pkg="sphero6d_operations" type="trajectory_publisher.py" name="trajectory_publisher" output = "screen" />
 	-->
+
+	<!-- Move robot through a sequence of configurations -->
 	<node pkg="sphero6d_operations" type="trajectory_publisher_list.py" args="$(find sphero6d_operations)/data/poses" name="trajectory_publisher" output="screen"/>
 
-	<node pkg="rviz_polygon_env" type="draw_polygon_env" args="$(find rviz_polygon_env)/data/environment" name="draw_polygon_env" output = "screen" />
-	<node pkg="rviz_graph3d" type="draw_graph3d" args="$(find rviz_graph3d)/data/vertex_data $(find rviz_graph3d)/data/edge_data" name="draw_graph" output = "screen" />
+	<!-- Visualize 2D polygonal environment -->
+	<!--
+		<node pkg="rviz_polygon_env" type="draw_polygon_env" args="$(find rviz_polygon_env)/data/environment" name="draw_polygon_env" output = "screen" />
+	-->
+
+	<!-- Visualize 3D environment -->
+	<node pkg="rviz_environment3d" type="draw_environment3d" args="$(find rviz_environment3d)/data/environment.yaml" name="draw_environment3d" output = "screen" />
+
+	<!-- Visualize graph in 3D -->
+	<!--
+		<node pkg="rviz_graph3d" type="draw_graph3d" args="$(find rviz_graph3d)/data/vertex_data $(find rviz_graph3d)/data/edge_data" name="draw_graph" output = "screen" />
+	-->
+
+	<!-- Visualize robot path in 3D-->
 	<node pkg="rviz_path3d" type="draw_path3d" args="$(find rviz_path3d)/data/path" name="draw_path" output = "screen" />
 
 </launch>

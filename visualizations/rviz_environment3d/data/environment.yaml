@@ -1,0 +1,25 @@
+# The object type can be SPHERE, CYLINDER, or CUBE
+# scale determines the size of the object
+# Orientation is specified as a quaternion
+
+objects:
+  - object:
+    type: SPHERE
+    scale: {x: 1, y: 1, z: 1}
+    position: {x: 2, y: 3, z: 0.5}
+    orientation: {x: 0, y: 0, z: 0, w: 1}
+    color: {r: 0.8, g: 0.8, b: 0.8, a: 0.5}
+
+  - object:
+    type: CYLINDER
+    scale: {x: 2, y: 2, z: 5}
+    position: {x: -2, y: 3, z: 1}
+    orientation: {x: 0.707, y: 0, z: 0, w: 0.707}
+    color: {r: 0.8, g: 0.8, b: 0.8, a: 0.5}
+
+  - object:
+    type: CUBE
+    scale: {x: 1, y: 1, z: 5}
+    position: {x: -5, y: -5, z: 2.5}
+    orientation: {x: 0, y: 0, z: 0, w: 1}
+    color: {r: 0.8, g: 0.8, b: 0.8, a: 0.5}

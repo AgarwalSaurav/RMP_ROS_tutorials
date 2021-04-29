@@ -42,8 +42,10 @@ Panels:
         - /Graph/vertices1
         - /Graph/edges1
         - /Path1
+        - /Environment3d1
+        - /Environment3d1/Status1
       Splitter Ratio: 0.5
-    Tree Height: 371
+    Tree Height: 805
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -186,6 +188,14 @@ Visualization Manager:
       Enabled: true
       Marker Topic: visualization_path
       Name: Path
+      Namespaces:
+        basic_shapes: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /visualization_environment3d
+      Name: Environment3d
       Namespaces:
         basic_shapes: true
       Queue Size: 100

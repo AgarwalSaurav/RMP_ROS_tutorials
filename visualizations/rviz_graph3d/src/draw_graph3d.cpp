@@ -37,7 +37,7 @@ visualization_msgs::Marker GetDefaultMarker() {
 
 int main( int argc, char** argv )
 {
-	ros::init(argc, argv, "draw_graph");
+	ros::init(argc, argv, "draw_graph3d");
 	ros::NodeHandle n;
 	ros::Rate r(1);
 	ros::Publisher marker_pub_vertices = n.advertise<visualization_msgs::Marker>("visualization_graph/vertices", 1);

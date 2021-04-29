@@ -38,7 +38,7 @@ visualization_msgs::Marker GetDefaultMarker() {
 
 int main( int argc, char** argv )
 {
-	ros::init(argc, argv, "draw_path");
+	ros::init(argc, argv, "draw_path3d");
 	ros::NodeHandle n;
 	ros::Rate r(1);
 	ros::Publisher marker_pub = n.advertise<visualization_msgs::Marker>("visualization_path", 1);
