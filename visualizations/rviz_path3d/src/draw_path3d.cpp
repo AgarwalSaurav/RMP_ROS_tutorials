@@ -14,7 +14,8 @@ visualization_msgs::Marker GetDefaultMarker() {
 	marker.type = visualization_msgs::Marker::LINE_STRIP;
 
 	marker.scale.x = 0.1;
-	marker.scale.y = 0.1;
+	marker.scale.y = 1;
+	marker.scale.z = 1;
 	marker.pose.position.x = 0;
 	marker.pose.position.y = 0;
 	marker.pose.position.z = 0;
