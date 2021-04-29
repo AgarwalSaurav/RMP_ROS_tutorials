@@ -29,6 +29,12 @@ e. The robot is shown as a red sphere along with its axes.
 
 
 
+### 3D environment and robot
+
+See [README _3D.md](README_3D.md)
+
+
+
 ## Packages and Files
 
 #### Sphero (planar 3DoF holonomic robot)
@@ -49,15 +55,15 @@ e. The robot is shown as a red sphere along with its axes.
 
 3. `sphero/sphero_operations`
    
-   `scripts/trajectory_publisher_list.py`: Python script file for sending a list of position coordinates to robot using a file
+   `scripts/trajectory_publisher_list.py`: Python script file for sending a list of configurations to robot using a file
    
-   `data/poses`: List of poses (x, y, theta) for the robot to follow
+   `data/configurations`: List of configurations (x, y, theta) for the robot to follow
    
    Optional:
    
-   `scripts/trajectory_publisher.py`: Python script file for sending position coordinates to robot
+   `scripts/trajectory_publisher.py`: Python script file for sending configurations to robot
    
-   `src/trajectory_publisher.cpp`: C++ file for sending position coordinates to robot
+   `src/trajectory_publisher.cpp`: C++ file for sending configurations to robot
    
    We need to modify either of the above files to get the robot follow a particular path. Constant velocity trajectory and cubic trajectory are already provided.
    
@@ -69,11 +75,11 @@ e. The robot is shown as a red sphere along with its axes.
    
 2. Visualization of graph. The input files are in sub-folder `data`.
 
-   a. `data/vertex_data` is vertex list.
+   a. `data/vertex_data` is a vertex list.
 
    Format: `<unique_vertex_id x_coordinate y_coordinate>`
 
-   `data/edge_data` is edge list.
+   `data/edge_data` is an edge list.
 
    Format: `<vertex_id vertex_id>`
 
