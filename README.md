@@ -29,7 +29,7 @@ e. The robot is shown as a red sphere along with its axes.
 
 
 
-### 3D environment and robot
+### 3D environment and 6D robot
 
 See [README _3D.md](README_3D.md)
 
