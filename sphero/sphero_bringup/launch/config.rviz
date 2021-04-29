@@ -37,11 +37,13 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
+        - /TF1
+        - /TF1/Frames1
         - /Graph/vertices1
         - /Graph/edges1
         - /Path1
       Splitter Ratio: 0.5
-    Tree Height: 371
+    Tree Height: 805
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -81,19 +83,19 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        x_axis:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        y_axis:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        z_axis:
+        rotation_z:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
+        translation_x:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        translation_y:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -107,12 +109,12 @@ Visualization Manager:
         All Enabled: false
         base_link:
           Value: false
-        x_axis:
-          Value: false
-        y_axis:
-          Value: false
-        z_axis:
+        rotation_z:
           Value: true
+        translation_x:
+          Value: false
+        translation_y:
+          Value: false
       Marker Alpha: 1
       Marker Scale: 2
       Name: TF
@@ -121,9 +123,9 @@ Visualization Manager:
       Show Names: false
       Tree:
         base_link:
-          x_axis:
-            y_axis:
-              z_axis:
+          translation_x:
+            translation_y:
+              rotation_z:
                 {}
       Update Interval: 0
       Value: true

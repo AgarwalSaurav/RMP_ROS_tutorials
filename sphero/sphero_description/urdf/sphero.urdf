@@ -14,13 +14,13 @@
   <link name="base_link">
   </link>
 
-  <link name="x_axis">
+  <link name="translation_x">
   </link>
 
-  <link name="y_axis">
+  <link name="translation_y">
   </link>
 
-  <link name="z_axis">
+  <link name="rotation_z">
     <visual>
       <geometry>
 				<sphere radius="${radius}"/>
@@ -30,21 +30,21 @@
 
   <joint name="x" type="prismatic">
     <parent link="base_link"/>
-    <child link="x_axis"/>
+    <child link="translation_x"/>
 		<axis xyz="1 0 0" />
 		<limit effort="30" velocity="${max_velocity}" lower="${x_lower_limit}" upper="${x_upper_limit}" />
   </joint>
 
   <joint name="y" type="prismatic">
-    <parent link="x_axis"/>
-    <child link="y_axis"/>
+    <parent link="translation_x"/>
+    <child link="translation_y"/>
 		<axis xyz="0 1 0" />
 		<limit effort="30" velocity="${max_velocity}" lower="${y_lower_limit}" upper="${y_upper_limit}" />
   </joint>
 
   <joint name="theta" type="continuous">
-    <parent link="y_axis"/>
-    <child link="z_axis"/>
+    <parent link="translation_y"/>
+    <child link="rotation_z"/>
 		<axis xyz="0 0 1" />
   </joint>
 
